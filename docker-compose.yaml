@@ -26,14 +26,15 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - RAILS_ENV=production
+      - RAILS_ENV=development
       - RAILS_SERVE_STATIC_FILES=true
       - PUMA_WORKERS=1
       - DATABASE_URL=postgresql://danbooru@postgres/danbooru
       - DANBOORU_REDIS_URL=redis://redis:6379
       - DANBOORU_IQDB_URL=http://iqdb:5588
-      - DANBOORU_CANONICAL_URL=http://localhost:3000
+      - DANBOORU_CANONICAL_URL=http://127.0.0.1:3000
     volumes:
+      - .:/danbooru
       - "danbooru-images:/danbooru/public/data"
     tmpfs:
       - /tmp
